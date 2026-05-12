@@ -1,0 +1,13 @@
+module_id	phase_code	label
+infrastructure	planning	Planning
+infrastructure	construction	Construction
+infrastructure	operation	Operation
+infrastructure	decommissioning	Decommissioning
+natural_capital	planning	Planning
+natural_capital	construction	Construction / establishment
+natural_capital	operation	Operation
+natural_capital	monitoring	Monitoring & stewardship
+real_estate	acquisition	Acquisition / due diligence
+real_estate	planning	Planning & design
+real_estate	construction	Construction / refurbishment
+real_estate	operation	Operation / asset management

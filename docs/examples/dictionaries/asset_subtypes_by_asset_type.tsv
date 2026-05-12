@@ -1,0 +1,21 @@
+asset_type_code	subtype_code	label
+energy	solar	Solar
+energy	wind	Wind
+energy	hydro	Hydro
+transport	road	Road
+transport	rail	Rail
+transport	port	Port
+water	treatment	Water Treatment
+water	distribution	Distribution Network
+forestry	timber_plantation	Timber Plantation
+forestry	mixed_forest	Mixed Forest
+agriculture	row_crops	Row Crops
+agriculture	livestock	Livestock
+blue_economy	aquaculture	Aquaculture
+blue_economy	coastal_restoration	Coastal Restoration
+residential	multi_family	Multi-Family
+residential	single_family	Single-Family
+commercial	office	Office
+commercial	retail	Retail
+industrial	warehouse	Warehouse
+industrial	light_industrial	Light Industrial

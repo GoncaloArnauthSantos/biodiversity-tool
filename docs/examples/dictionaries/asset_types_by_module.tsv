@@ -1,0 +1,10 @@
+module_id	asset_type_code	label
+infrastructure	energy	Energy
+infrastructure	transport	Transport
+infrastructure	water	Water
+natural_capital	forestry	Forestry
+natural_capital	agriculture	Agriculture
+natural_capital	blue_economy	Blue Economy
+real_estate	residential	Residential
+real_estate	commercial	Commercial
+real_estate	industrial	Industrial

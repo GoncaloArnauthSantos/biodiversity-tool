@@ -1,0 +1,323 @@
+{
+  "version": "2026-05-06",
+  "modules": [
+    { "id": "infrastructure", "label": "Infrastructure" },
+    { "id": "natural_capital", "label": "Natural Capital" },
+    { "id": "real_estate", "label": "Real Estate" }
+  ],
+  "answerOptions": [
+    { "value": "yes", "label": "Yes" },
+    { "value": "no", "label": "No" },
+    { "value": "unknown", "label": "Not sure / Unknown" },
+    { "value": "na", "label": "Not applicable" }
+  ],
+  "filters": {
+    "assetTypesByModule": {
+      "infrastructure": [
+        { "value": "energy", "label": "Energy" },
+        { "value": "transport", "label": "Transport" },
+        { "value": "water", "label": "Water" }
+      ],
+      "natural_capital": [
+        { "value": "forestry", "label": "Forestry" },
+        { "value": "agriculture", "label": "Agriculture" },
+        { "value": "blue_economy", "label": "Blue Economy" }
+      ],
+      "real_estate": [
+        { "value": "residential", "label": "Residential" },
+        { "value": "commercial", "label": "Commercial" },
+        { "value": "industrial", "label": "Industrial" }
+      ]
+    },
+    "assetSubtypesByAssetType": {
+      "energy": [
+        { "value": "solar", "label": "Solar" },
+        { "value": "wind", "label": "Wind" },
+        { "value": "hydro", "label": "Hydro" }
+      ],
+      "transport": [
+        { "value": "road", "label": "Road" },
+        { "value": "rail", "label": "Rail" },
+        { "value": "port", "label": "Port" }
+      ],
+      "water": [
+        { "value": "treatment", "label": "Water Treatment" },
+        { "value": "distribution", "label": "Distribution Network" }
+      ],
+      "forestry": [
+        { "value": "timber_plantation", "label": "Timber Plantation" },
+        { "value": "mixed_forest", "label": "Mixed Forest" }
+      ],
+      "agriculture": [
+        { "value": "row_crops", "label": "Row Crops" },
+        { "value": "livestock", "label": "Livestock" }
+      ],
+      "blue_economy": [
+        { "value": "aquaculture", "label": "Aquaculture" },
+        { "value": "coastal_restoration", "label": "Coastal Restoration" }
+      ],
+      "residential": [
+        { "value": "multi_family", "label": "Multi-Family" },
+        { "value": "single_family", "label": "Single-Family" }
+      ],
+      "commercial": [
+        { "value": "office", "label": "Office" },
+        { "value": "retail", "label": "Retail" }
+      ],
+      "industrial": [
+        { "value": "warehouse", "label": "Warehouse" },
+        { "value": "light_industrial", "label": "Light Industrial" }
+      ]
+    },
+    "projectPhasesByModule": {
+      "infrastructure": [
+        { "value": "planning", "label": "Planning" },
+        { "value": "construction", "label": "Construction" },
+        { "value": "operation", "label": "Operation" },
+        { "value": "decommissioning", "label": "Decommissioning" }
+      ],
+      "natural_capital": [
+        { "value": "planning", "label": "Planning" },
+        { "value": "construction", "label": "Construction / establishment" },
+        { "value": "operation", "label": "Operation" },
+        { "value": "monitoring", "label": "Monitoring & stewardship" }
+      ],
+      "real_estate": [
+        { "value": "acquisition", "label": "Acquisition / due diligence" },
+        { "value": "planning", "label": "Planning & design" },
+        { "value": "construction", "label": "Construction / refurbishment" },
+        { "value": "operation", "label": "Operation / asset management" }
+      ]
+    },
+    "countries": [
+      { "value": "ALL", "label": "Global / Multiple Countries" },
+      { "value": "PT", "label": "Portugal" },
+      { "value": "FR", "label": "France" },
+      { "value": "DE", "label": "Germany" },
+      { "value": "NL", "label": "Netherlands" },
+      { "value": "BR", "label": "Brazil" }
+    ]
+  },
+  "questions": [
+    {
+      "id": "INF_Q001",
+      "modules": ["infrastructure", "natural_capital"],
+      "text": "Has a biodiversity baseline assessment been completed for the project area?",
+      "filters": {
+        "assetType": ["ALL"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "construction"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Baseline means understanding key habitats, species pressure, and ecosystem services before project commitment.",
+        "tools": [
+          { "label": "IBAT", "url": "https://www.ibat-alliance.org/" }
+        ],
+        "standards": [
+          { "label": "TNFD LEAP", "url": "https://tnfd.global/" }
+        ]
+      },
+      "recommendations": {
+        "yes": "Ensure baseline is updated when project boundaries or design assumptions change.",
+        "no": "Start with a baseline screening before investment committee decision.",
+        "unknown": "Assign an owner to confirm whether baseline analysis exists.",
+        "na": ""
+      }
+    },
+    {
+      "id": "INF_Q001_A",
+      "modules": ["infrastructure"],
+      "text": "Is the baseline expected to be completed before financial close?",
+      "filters": {
+        "assetType": ["ALL"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "construction"],
+        "countryCode": ["ALL"]
+      },
+      "condition": {
+        "sourceQuestionId": "INF_Q001",
+        "operator": "in",
+        "values": ["no", "unknown"]
+      },
+      "resources": {
+        "clarification": "This conditional sub-question appears when baseline status is not confirmed.",
+        "tools": [],
+        "standards": []
+      },
+      "recommendations": {
+        "yes": "Track delivery date in project governance milestones.",
+        "no": "High risk: include biodiversity baseline as a pre-condition for approval.",
+        "unknown": "Escalate to project sponsor for immediate clarification.",
+        "na": ""
+      }
+    },
+    {
+      "id": "INF_Q002",
+      "modules": ["infrastructure"],
+      "text": "Does the project include a no-net-loss or net-positive biodiversity objective?",
+      "filters": {
+        "assetType": ["energy", "transport"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "construction", "operation"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Objective can be policy-level or project-level but should be auditable.",
+        "tools": [],
+        "standards": [
+          { "label": "IFC PS6", "url": "https://www.ifc.org/" }
+        ]
+      },
+      "recommendations": {
+        "yes": "Define KPIs and periodic monitoring against the objective.",
+        "no": "Set a proportionate biodiversity target linked to project impacts.",
+        "unknown": "Check environmental permit commitments and financing covenants.",
+        "na": ""
+      }
+    },
+    {
+      "id": "NC_Q001",
+      "modules": ["natural_capital"],
+      "text": "Have critical ecosystem dependencies been identified for this investment?",
+      "filters": {
+        "assetType": ["ALL"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "operation"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Dependencies include water quality, pollination, soil health, and coastal protection.",
+        "tools": [
+          { "label": "ENCORE", "url": "https://encore.naturalcapital.finance/" }
+        ],
+        "standards": []
+      },
+      "recommendations": {
+        "yes": "Link dependencies to risk controls and stewardship plans.",
+        "no": "Run a dependency screen and document top three material dependencies.",
+        "unknown": "Collect minimum input data for an initial ENCORE pass.",
+        "na": ""
+      }
+    },
+    {
+      "id": "NC_Q002",
+      "modules": ["natural_capital"],
+      "text": "Are local or indigenous communities included in project decision-making?",
+      "filters": {
+        "assetType": ["forestry", "agriculture", "blue_economy"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "construction", "operation"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Inclusion should be meaningful and documented, not only one-off consultation.",
+        "tools": [],
+        "standards": [
+          { "label": "UNDRIP", "url": "https://www.un.org/development/desa/indigenouspeoples/" }
+        ]
+      },
+      "recommendations": {
+        "yes": "Record engagement outcomes and feedback loops in governance documents.",
+        "no": "Create a formal stakeholder engagement plan before next project gate.",
+        "unknown": "Validate if consultation has happened and at what quality level.",
+        "na": ""
+      }
+    },
+    {
+      "id": "NC_Q002_A",
+      "modules": ["natural_capital"],
+      "text": "Is there a grievance mechanism available to affected communities?",
+      "filters": {
+        "assetType": ["ALL"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "construction", "operation"],
+        "countryCode": ["ALL"]
+      },
+      "condition": {
+        "sourceQuestionId": "NC_Q002",
+        "operator": "equals",
+        "values": ["yes"]
+      },
+      "resources": {
+        "clarification": "Mechanism should be accessible, documented, and track resolution timelines.",
+        "tools": [],
+        "standards": []
+      },
+      "recommendations": {
+        "yes": "Publish grievance process and performance metrics annually.",
+        "no": "Design a grievance mechanism with clear SLA and escalation path.",
+        "unknown": "Assign accountability for community feedback and disputes.",
+        "na": ""
+      }
+    },
+    {
+      "id": "RE_Q001",
+      "modules": ["real_estate"],
+      "text": "Has a nature-related site risk screening been completed for this property?",
+      "filters": {
+        "assetType": ["ALL"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "acquisition", "operation"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Risk screening should cover proximity to protected areas and flood or heat stress.",
+        "tools": [],
+        "standards": []
+      },
+      "recommendations": {
+        "yes": "Integrate findings into asset management and capex planning.",
+        "no": "Run a basic site risk screening before transaction finalization.",
+        "unknown": "Confirm with transaction team whether a screening exists.",
+        "na": ""
+      }
+    },
+    {
+      "id": "RE_Q002",
+      "modules": ["real_estate"],
+      "text": "Are biodiversity-enhancing design features included in project plans?",
+      "filters": {
+        "assetType": ["residential", "commercial"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["planning", "construction"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Examples: native planting, green roofs, ecological corridors, permeable landscaping.",
+        "tools": [],
+        "standards": [
+          { "label": "BREEAM", "url": "https://www.breeam.com/" }
+        ]
+      },
+      "recommendations": {
+        "yes": "Set measurable biodiversity outcomes for post-completion monitoring.",
+        "no": "Review low-cost design changes to reduce habitat fragmentation.",
+        "unknown": "Ask design team to provide current biodiversity feature list.",
+        "na": ""
+      }
+    },
+    {
+      "id": "CROSS_Q_GOVERNANCE",
+      "modules": ["infrastructure", "natural_capital", "real_estate"],
+      "text": "Is biodiversity performance reported to governance or investment committees?",
+      "filters": {
+        "assetType": ["ALL"],
+        "assetSubtype": ["ALL"],
+        "projectPhase": ["operation"],
+        "countryCode": ["ALL"]
+      },
+      "resources": {
+        "clarification": "Reporting can be quarterly dashboards or formal committee papers.",
+        "tools": [],
+        "standards": []
+      },
+      "recommendations": {
+        "yes": "Include trend indicators and management actions in reporting packs.",
+        "no": "Define minimum reporting cadence and assign data owner.",
+        "unknown": "Map existing governance forums and current ESG reporting scope.",
+        "na": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodiversity Assessment Tool | Finance for Biodiversity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./ffb-biodiversity-tool.css">
+</head>
+<body>
+  <div class="ffb-biodiversity-tool">
+    <header>
+      <h1 class="ffb-subheading">Biodiversity Assessment Tool (Mocked v2)</h1>
+    </header>
+
+    <section class="module-tabs" id="module-tabs"></section>
+
+    <section class="selectors-grid">
+      <div class="field-group">
+        <label for="asset-type">Asset Type</label>
+        <select id="asset-type"></select>
+      </div>
+      <div class="field-group">
+        <label for="asset-subtype">Asset Sub-type</label>
+        <select id="asset-subtype"></select>
+      </div>
+      <div class="field-group">
+        <label for="project-phase">Project Phase</label>
+        <select id="project-phase"></select>
+      </div>
+      <div class="field-group">
+        <label for="country-code">Country</label>
+        <select id="country-code"></select>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <h2 class="ffb-subheading ffb-subheading--medium">Questionnaire</h2>
+        <div id="questions-root"></div>
+      </section>
+      <aside class="panel">
+        <h2 class="ffb-subheading ffb-subheading--medium">Recommendations</h2>
+        <div id="recommendations-root" class="recommendation-list"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module" src="./tool-app.js"></script>
+</body>
+</html>

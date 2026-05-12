@@ -1,0 +1,323 @@
+/*
+ * Scoped styles for the biodiversity screening tool.
+ * Tokens mirror total-child-theme/assets/scss/inc/_variables.scss.
+ * Typography aligns with #wrap + .ffb-subheading from inc/_repeatable.scss.
+ * When embedded in WP + Total, optional --wpex-* vars improve parity.
+ */
+
+.ffb-biodiversity-tool {
+  --ffb-indigo: #28286c;
+  --ffb-blue: #5c71d7;
+  --ffb-emerald: #50c27b;
+  --ffb-azure-white: #d6dbf5;
+  --ffb-body-text: #28286c;
+  --ffb-muted: #5f6780;
+  --ffb-border: var(--wpex-border-main, #e2e7f2);
+  --ffb-border-input: #ced4df;
+  --ffb-border-tab: #cfd5e5;
+  --ffb-surface: var(--wpex-surface-1, #ffffff);
+  --ffb-surface-soft: var(--wpex-surface-2, #f8faff);
+  --ffb-surface-tint: #f7f9ff;
+  --ffb-meta-color: #334067;
+  --ffb-rec-border: var(--ffb-azure-white);
+  --ffb-divider: #eff2f8;
+  --ffb-radius: var(--wpex-rounded, 10px);
+  --ffb-radius-sm: var(--wpex-rounded-sm, 5px);
+  --ffb-on-primary: #ffffff;
+
+  box-sizing: border-box;
+  font-family: "Lato", Trebuchet MS, Arial, sans-serif;
+  font-size: var(--wpex-text-base, 1rem);
+  font-weight: 400;
+  color: var(--ffb-body-text);
+  line-height: 1.4;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.ffb-biodiversity-tool *,
+.ffb-biodiversity-tool *::before,
+.ffb-biodiversity-tool *::after {
+  box-sizing: inherit;
+}
+
+/* Mirrors #wrap .ffb-subheading / .ffb-subheading--medium (child theme repeatable) */
+.ffb-biodiversity-tool .ffb-subheading {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--ffb-indigo);
+}
+
+@media screen and (max-width: 1023.97px) {
+  .ffb-biodiversity-tool .ffb-subheading {
+    font-size: 1.625rem;
+  }
+}
+
+@media screen and (max-width: 767.97px) {
+  .ffb-biodiversity-tool .ffb-subheading {
+    font-size: 1.375rem;
+  }
+}
+
+.ffb-biodiversity-tool .ffb-subheading--medium {
+  font-size: 1.25rem;
+}
+
+.ffb-biodiversity-tool .muted {
+  color: var(--ffb-muted);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.56;
+}
+
+.ffb-biodiversity-tool a {
+  color: var(--ffb-emerald);
+  text-decoration: none;
+}
+
+.ffb-biodiversity-tool a:hover {
+  text-decoration: underline;
+}
+
+.ffb-biodiversity-tool .module-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 16px;
+}
+
+.ffb-biodiversity-tool .module-tab {
+  border: 1px solid var(--ffb-border-tab);
+  background: var(--ffb-surface);
+  color: var(--ffb-indigo);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.ffb-biodiversity-tool .module-tab:hover {
+  border-color: var(--ffb-blue);
+}
+
+.ffb-biodiversity-tool .module-tab:focus-visible {
+  outline: 2px solid var(--ffb-blue);
+  outline-offset: 2px;
+}
+
+.ffb-biodiversity-tool .module-tab.active {
+  border-color: var(--ffb-blue);
+  background: var(--ffb-blue);
+  color: var(--ffb-on-primary);
+}
+
+.ffb-biodiversity-tool .selectors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ffb-biodiversity-tool .field-group label {
+  display: block;
+  font-size: 0.8125rem;
+  margin-bottom: 6px;
+  color: var(--ffb-indigo);
+  font-weight: 600;
+}
+
+.ffb-biodiversity-tool select {
+  width: 100%;
+  border: 1px solid var(--ffb-border-input);
+  border-radius: var(--ffb-radius-sm);
+  padding: 10px 12px;
+  background: var(--ffb-surface);
+  color: var(--wpex-input-color, var(--ffb-body-text));
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color 0.2s ease;
+}
+
+.ffb-biodiversity-tool select:hover {
+  border-color: var(--ffb-azure-white);
+}
+
+.ffb-biodiversity-tool select:focus-visible {
+  outline: 2px solid var(--ffb-blue);
+  outline-offset: 1px;
+  border-color: var(--ffb-blue);
+}
+
+.ffb-biodiversity-tool .layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+}
+
+.ffb-biodiversity-tool .panel {
+  border: 1px solid var(--ffb-border);
+  border-radius: var(--ffb-radius);
+  background: var(--ffb-surface);
+  padding: 20px;
+  box-shadow: var(--wpex-shadow-sm, 0 1px 3px rgba(40, 40, 108, 0.06));
+}
+
+.ffb-biodiversity-tool .panel h2.ffb-subheading {
+  margin-bottom: 16px;
+}
+
+.ffb-biodiversity-tool .panel h2.ffb-subheading--medium {
+  margin-bottom: 14px;
+}
+
+.ffb-biodiversity-tool .question-item {
+  border-top: 1px solid var(--ffb-divider);
+  padding: 14px 0;
+}
+
+.ffb-biodiversity-tool .question-item:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.ffb-biodiversity-tool .question-text {
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ffb-body-text);
+}
+
+.ffb-biodiversity-tool .question-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ffb-biodiversity-tool .meta-btn {
+  border: 1px solid var(--ffb-border);
+  background: var(--ffb-surface-tint);
+  border-radius: var(--ffb-radius-sm);
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ffb-meta-color);
+  line-height: 1.4;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.ffb-biodiversity-tool .meta-btn:hover {
+  border-color: var(--ffb-azure-white);
+  background: var(--ffb-surface-soft);
+}
+
+.ffb-biodiversity-tool .meta-btn:focus-visible {
+  outline: 2px solid var(--ffb-blue);
+  outline-offset: 2px;
+}
+
+.ffb-biodiversity-tool .meta-content {
+  display: none;
+  margin: 8px 0 10px;
+  border-left: 3px solid var(--ffb-blue);
+  padding: 10px 12px;
+  background: var(--ffb-surface-soft);
+  font-size: 1rem;
+  line-height: 1.56;
+  color: var(--ffb-body-text);
+}
+
+.ffb-biodiversity-tool .meta-content.visible {
+  display: block;
+}
+
+.ffb-biodiversity-tool .question-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.ffb-biodiversity-tool .question-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.ffb-biodiversity-tool .question-options input[type="radio"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--ffb-emerald);
+  cursor: pointer;
+}
+
+.ffb-biodiversity-tool .recommendation-list {
+  display: grid;
+  gap: 12px;
+}
+
+.ffb-biodiversity-tool .recommendation-item {
+  border: 1px solid var(--ffb-rec-border);
+  border-radius: var(--ffb-radius);
+  padding: 14px;
+  background: var(--ffb-surface-soft);
+}
+
+.ffb-biodiversity-tool .recommendation-item p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.56;
+}
+
+.ffb-biodiversity-tool .recommendation-item p + p {
+  margin-top: 8px;
+}
+
+.ffb-biodiversity-tool .recommendation-source {
+  margin: 0 0 6px;
+  font-size: 0.8125rem;
+  color: var(--wpex-text-3, #4b5680);
+  font-weight: 700;
+}
+
+.ffb-biodiversity-tool .empty-state {
+  border: 1px dashed var(--ffb-border-tab);
+  border-radius: var(--ffb-radius);
+  padding: 16px;
+  color: var(--ffb-muted);
+  background: var(--wpex-gray-50, #fafcff);
+  font-size: 1rem;
+  line-height: 1.56;
+}
+
+@media (max-width: 1024px) {
+  .ffb-biodiversity-tool .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ffb-biodiversity-tool .selectors-grid {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+}
