@@ -1,8 +1,8 @@
 /*
  * Scoped styles for the biodiversity screening tool.
- * Tokens mirror total-child-theme/assets/scss/inc/_variables.scss.
- * Typography aligns with #wrap + .ffb-subheading from inc/_repeatable.scss.
- * When embedded in WP + Total, optional --wpex-* vars improve parity.
+ * Design tokens chosen to sit cleanly inside a typical corporate WP theme;
+ * tune to match the host site when embedding in production.
+ * Optional: map fallbacks to host theme CSS variables if present (e.g. --wpex-*).
  */
 
 .ffb-biodiversity-tool {

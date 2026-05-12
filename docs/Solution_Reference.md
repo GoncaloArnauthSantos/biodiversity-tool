@@ -28,14 +28,14 @@ Excel (editorial source)
     → Excel script → JSON (agreed schema)
          ↓
 WordPress: minimal plugin
-    → registers shortcode, e.g. [ffb_biodiversity_tool]
+    → registers shortcode, e.g. [biodiversity_screening_tool]
     → wp_enqueue_script / wp_enqueue_style (.js and .css files)
     → optional: JSON URL (file in plugin, Media Library, or ACF)
          ↓
-WP page (WPBakery or classic editor)
+WP page (page builder or block editor)
     → one line with the shortcode in content
          ↓
-Visitor sees: theme (Total header/footer) + your tool in the middle
+Visitor sees: site header/footer + your tool in the content area
 ```
 
 ---
@@ -67,25 +67,24 @@ If JSON lives in the **Media Library** or a configurable URL, it is still a sing
 
 ---
 
-## 7. Styles and Total theme
+## 7. Styles and host theme
 
 - The tool should use a **CSS wrapper** (e.g. `.ffb-biodiversity-tool`) to avoid fighting the theme.
-- **Stylesheet:** `ffb-biodiversity-tool.css` mirrors child-theme tokens (`_variables.scss`) and heading patterns (`.ffb-subheading`, `#wrap` typography). Enqueue that file from the plugin; do not paste large `<style>` blocks into the page builder.
-- Brand alignment (colours, fonts) can follow their guidelines; testing on a **draft page** on the real site surfaces Total conflicts early.
+- **Stylesheet:** `ffb-biodiversity-tool.css` should be enqueued from the plugin; avoid pasting large `<style>` blocks into a page builder. Tune colours and typography to match the host site’s design tokens when embedding in production.
+- Validate on a **draft or staging page** early — commercial themes often set strong defaults on headings, links, and `#content` wrappers.
 
 ---
 
 ## 8. Out of core for now (examples)
 
-User accounts, cloud save, AI — future phases if the client wants budget for them.
+User accounts, cloud save, AI — future phases if stakeholders scope and fund them.
 
 ---
 
 ## 9. Related repo documents
 
-- `Excel_Data_Structure_Proposal.md` — How to structure Excel for the converter  
-- `Developer_Brifing.md` — Client functional requirements  
-- `Meeting_Preparation.md` — Generic agenda (pair with `Client_Meeting_Brief.md`)  
+- `tool-data.mock.json` — Reference dataset and implicit JSON contract  
+- `docs/Data_pipeline.md` — High-level data flow and JSON sections  
 
 ---
 

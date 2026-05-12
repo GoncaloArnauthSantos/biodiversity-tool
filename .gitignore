@@ -1,5 +1,17 @@
-# Local WP mirror (large; do not commit)
-financeforbiodiversity.org.mirrow/
+# Local full-site / CMS mirror folders (large; confidential). Name your local dump with suffix .mirrow
+*.mirrow/
+
+# Optional local drop folder for anything you never want pushed
+private/
+
+# --- Confidential / client-internal docs (keep locally; not for public remotes) ---
+Developer_Brifing.md
+Meeting_Preparation.md
+Font_Template.md
+Excel_Data_Structure_Proposal.md
+docs/Client_Meeting_Brief.md
+docs/WordPress_Mirror_Analysis.md
+docs/Excel_Structure_Client_Guide.md
 
 # macOS
 .DS_Store

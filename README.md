@@ -1,8 +1,10 @@
 # Biodiversity Assessment Tool
 
-Interactive **screening questionnaire** for nature-related due diligence, built for the [Finance for Biodiversity Foundation](https://www.financeforbiodiversity.org/) (FfB). This repository holds a **vanilla JavaScript prototype**: modular ES modules, no build step, and a JSON-driven content model aligned with an Excel → JSON editorial pipeline.
+Prototype **screening questionnaire** for biodiversity and nature-related due diligence across infrastructure, natural capital, and real estate–style asset contexts. This repository is a **vanilla JavaScript** front end: ES modules, no bundler, and JSON-driven content so the same app can be embedded in a CMS later.
 
-**Status:** UI and core behaviour are implemented; **WordPress plugin packaging**, **Excel → JSON converter**, and **PDF / Excel export** are planned next (see [Developer briefing](Developer_Brifing.md) and [Meeting preparation](Meeting_Preparation.md)).
+**Status:** Core UI and filtering logic are in place. **WordPress plugin packaging**, an **Excel → JSON** build pipeline, and **PDF / Excel export** are follow-up work (see [docs/Solution_Reference.md](docs/Solution_Reference.md) and [docs/Data_pipeline.md](docs/Data_pipeline.md)).
+
+Internal briefings and deployment-specific notes (not intended for a public README) are **not** tracked in this tree; see [INTERNAL_MATERIALS.md](INTERNAL_MATERIALS.md).
 
 ---
 
@@ -10,14 +12,14 @@ Interactive **screening questionnaire** for nature-related due diligence, built 
 
 | Area | Behaviour |
 |------|------------|
-| **Modules** | Three tabs: Infrastructure, Natural Capital, Real Estate. |
-| **Filters** | Four required selects: asset type, asset sub-type, project phase, country (phase labels depend on module). |
-| **Questions** | Only rows matching module, filters, and optional **conditional** rules (`equals` / `in` on a prior answer). |
+| **Modules** | Three tabs (e.g. infrastructure-style, natural capital, real estate–style sectors — labels come from JSON). |
+| **Filters** | Four required selects: asset type, asset sub-type, project phase, country (phase options depend on module). |
+| **Questions** | Only items matching module, filters, and optional **conditional** rules (`equals` / `in` on a prior answer). |
 | **Answers** | Four options: Yes, No, Not sure / Unknown, Not applicable. |
-| **Recommendations** | Side panel lists cumulative recommendation text per answered question, when defined for that answer. |
+| **Recommendations** | Side panel shows cumulative recommendation copy per answered question when defined for that answer. |
 | **Support content** | Per question: clarification text plus linked **Tools** and **Standards** (from JSON). |
 
-Styles live under `.ffb-biodiversity-tool` so the widget can sit inside a WordPress theme without leaking globals.
+UI styles are scoped under `.ffb-biodiversity-tool` so the block can sit inside a host page without resetting global site CSS.
 
 ---
 
@@ -25,7 +27,7 @@ Styles live under `.ffb-biodiversity-tool` so the widget can sit inside a WordPr
 
 - **Runtime:** Modern browsers (ES modules, `fetch`).
 - **Markup:** Static shell in `index.html`; lists and questions rendered from JS.
-- **Data:** `tool-data.mock.json` — target shape for production JSON (see [Excel data structure proposal](Excel_Data_Structure_Proposal.md)).
+- **Data:** `tool-data.mock.json` — reference dataset and implicit schema (see [docs/Data_pipeline.md](docs/Data_pipeline.md)).
 
 ---
 
@@ -34,18 +36,15 @@ Styles live under `.ffb-biodiversity-tool` so the widget can sit inside a WordPr
 ```
 biodiversity-tool/
 ├── index.html                 # Standalone demo shell
-├── ffb-biodiversity-tool.css  # Scoped styles (same file to enqueue in WP)
+├── ffb-biodiversity-tool.css  # Scoped styles (enqueue the same file from a plugin if needed)
 ├── tool-app.js                # Entry: load JSON, bind events, orchestrate renders
 ├── tool-state.js              # Mutable app state
 ├── tool-logic.js              # Filter matching, visibility, conditional rules
 ├── tool-render.js             # DOM updates
 ├── tool-utils.js              # Shared helpers (escaping, selects)
 ├── tool-data.mock.json        # Sample dataset
-├── docs/                      # Architecture, client briefs, WP notes, Excel guides
-├── Excel_Data_Structure_Proposal.md
-├── Developer_Brifing.md
-├── Meeting_Preparation.md
-└── Font_Template.md
+├── docs/                      # Architecture + data-flow notes (public-safe)
+└── docs/examples/             # Sample TSVs / dictionaries for workbook modelling
 ```
 
 ---
@@ -68,53 +67,42 @@ Then open the URL the server prints (e.g. `http://localhost:3000` or `http://loc
 
 ---
 
-## Data and content workflow
+## Data flow (summary)
 
-1. Editors maintain questionnaire content in **Excel** (tabs and columns described in [Excel_Data_Structure_Proposal.md](Excel_Data_Structure_Proposal.md)).
-2. A **converter** (to be added) produces validated **JSON** matching the schema used by the app.
-3. In production, JSON is served from the **WordPress plugin**, the media library, or another URL the plugin is configured to load.
-
-The mock file documents the current JSON contract alongside [docs/Excel_Structure_Client_Guide.md](docs/Excel_Structure_Client_Guide.md) for stakeholder-friendly explanations.
+Editors maintain structured content (typically **spreadsheet → JSON**). The app loads one JSON document describing modules, filters, questions, and recommendations. See [docs/Data_pipeline.md](docs/Data_pipeline.md).
 
 ---
 
-## WordPress integration (summary)
+## WordPress (summary)
 
-Intended deployment: a **small plugin** that registers a shortcode, enqueues `tool-*.js` as `type="module"`, enqueues `ffb-biodiversity-tool.css`, and exposes the JSON URL. Page builders (e.g. WPBakery) only embed the shortcode — application logic stays in JavaScript.
-
-Theme alignment notes for the FfB site (Total child theme, tokens, Lato) live in [docs/WordPress_Mirror_Analysis.md](docs/WordPress_Mirror_Analysis.md). End-to-end architecture: [docs/Solution_Reference.md](docs/Solution_Reference.md).
+Target integration: a **small plugin** that registers a shortcode, enqueues the module scripts with `type="module"`, enqueues the stylesheet, and exposes a configurable JSON URL. Page builders only output the shortcode; application logic stays in JavaScript. Details: [docs/Solution_Reference.md](docs/Solution_Reference.md).
 
 ---
 
-## Documentation index
+## Documentation
 
 | Document | Purpose |
 |----------|---------|
-| [docs/Solution_Reference.md](docs/Solution_Reference.md) | Mental model: Excel → JSON → plugin → page |
-| [docs/WordPress_Mirror_Analysis.md](docs/WordPress_Mirror_Analysis.md) | Live-site theme stack and CSS integration notes |
-| [docs/Client_Meeting_Brief.md](docs/Client_Meeting_Brief.md) | Stakeholder meeting backbone |
-| [Meeting_Preparation.md](Meeting_Preparation.md) | Agenda, MVP scope, risks |
-| [docs/Excel_Structure_Client_Guide.md](docs/Excel_Structure_Client_Guide.md) | How to present the workbook structure to non-developers |
-| [Excel_Data_Structure_Proposal.md](Excel_Data_Structure_Proposal.md) | Full column spec for Excel → JSON |
-| [Developer_Brifing.md](Developer_Brifing.md) | Original functional requirements |
-| [docs/examples/sample_questions_from_mock.tsv](docs/examples/sample_questions_from_mock.tsv) | Tab-separated export of mock questions |
-| [docs/examples/dictionaries/](docs/examples/dictionaries/) | Sample dictionary sheets (`README` inside folder) |
+| [docs/Solution_Reference.md](docs/Solution_Reference.md) | Architecture: Excel → JSON → plugin → page |
+| [docs/Data_pipeline.md](docs/Data_pipeline.md) | JSON shape and editorial pipeline (high level) |
+| [docs/examples/sample_questions_from_mock.tsv](docs/examples/sample_questions_from_mock.tsv) | Tab-separated sample aligned with the mock JSON |
+| [docs/examples/dictionaries/](docs/examples/dictionaries/) | Sample dictionary tabs; see `README` inside |
 
 ---
 
 ## Roadmap (high level)
 
 - [ ] WordPress plugin: shortcode, asset enqueue, configurable JSON source  
-- [ ] Excel → JSON build script with schema validation  
-- [ ] Branded **PDF** and **Excel** export (per client agreement)  
-- [ ] Hardening: accessibility pass, error states, optional i18n  
-
-Out of scope for early iterations unless explicitly scoped: user accounts, cloud save, AI-assisted answers (see briefing).
+- [ ] Spreadsheet → JSON converter with schema validation  
+- [ ] Branded **PDF** and **Excel** export (per product agreement)  
+- [ ] Hardening: accessibility, error states, optional i18n  
 
 ---
 
 ## Contributing
 
-This is a client-aligned prototype. For structural or copy changes, prefer updating the linked docs in `docs/` so Excel, JSON, and UI stay in sync.
+Prefer keeping **one** canonical JSON shape (`tool-data.mock.json`) and updating examples when the schema evolves. Confidential specs and internal comms stay outside this published tree — see [INTERNAL_MATERIALS.md](INTERNAL_MATERIALS.md).
 
-If you add a **LICENSE** file at the repo root, link it here once terms are confirmed with the foundation.
+### Documentation style
+
+**Code** (class names, prefixes like `.ffb-biodiversity-tool`, filenames) stays as-is for consistency and embedding. **Reader-facing Markdown** (this README, public `docs/*.md`) should stay **generic**: no named commissioning organisation and no links to a specific production website. Sample JSON/TSV may still use placeholder or third-party **resource** links (standards, tools) to keep demos realistic.
