@@ -269,8 +269,13 @@
 .ffb-biodiversity-tool .question-options input[type="radio"] {
   width: 1.125rem;
   height: 1.125rem;
-  accent-color: var(--ffb-emerald);
+  accent-color: var(--ffb-blue);
   cursor: pointer;
+}
+
+.ffb-biodiversity-tool .question-options input[type="radio"]:focus-visible {
+  outline: 2px solid var(--ffb-blue);
+  outline-offset: 2px;
 }
 
 .ffb-biodiversity-tool .recommendation-list {
