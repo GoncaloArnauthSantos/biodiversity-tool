@@ -12,17 +12,18 @@ Content is authored in structured tables (typically one or more **Excel** workbo
 
 ## 2. Target JSON (conceptual)
 
-The running app expects one JSON document. The bundled **`tool-data.mock.json`** is the reference implementation. At a high level it contains:
+The running app expects one JSON document. The bundled **`tool-data.sample.json`** is the current reference. At a high level it contains:
 
 | Section | Role |
 |---------|------|
 | `version` | Opaque string for cache-busting / support. |
-| `modules` | Tab labels and stable IDs (`id` + `label`). |
 | `answerOptions` | The four radio values and human-readable labels. |
-| `filters` | Lookups: asset types by module, subtypes by asset type, project phases by module, country list. |
-| `questions` | Each item: `id`, `text`, `modules[]`, optional per-axis `filters`, optional `condition` (prior question + operator + values), `recommendations` map keyed by answer value, optional `resources` (clarification, tools, standards). |
+| `filters` | Lookups: `assetTypes`, `assetSubtypesByAssetType`, `projectPhases`. |
+| `questions` | Each item: `id`, `text`, optional per-axis `filters`, optional `condition` (prior question + operator + values), `recommendations` map keyed by answer value, optional `resources` (clarification, tools, standards). |
 
 Conditional visibility today supports **`equals`** and **`in`** against a single `sourceQuestionId`.
+
+(`tool-data.mock.json` is a legacy multi-module sample and is **not** loaded by the current app.)
 
 ---
 

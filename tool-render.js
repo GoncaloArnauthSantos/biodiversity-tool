@@ -5,32 +5,22 @@
 import { renderSelect, escapeHtml } from "./tool-utils.js";
 import {
   allFiltersSelected,
-  getAssetTypeOptionsForModule,
+  getAssetTypeOptions,
   getAssetSubtypeOptionsForSelection,
-  getProjectPhaseOptionsForModule,
+  getProjectPhaseOptions,
   getVisibleQuestions
 } from "./tool-logic.js";
 
 export function renderAll(state) {
-  renderModuleTabs(state);
   renderFilterOptions(state);
   renderQuestions(state);
   renderRecommendations(state);
 }
 
-export function renderModuleTabs(state) {
-  var root = document.getElementById("module-tabs");
-  root.innerHTML = state.data.modules.map(function (mod) {
-    var active = mod.id === state.module ? "active" : "";
-    return '<button class="module-tab ' + active + '" data-module-id="' + escapeHtml(mod.id) + '">' + escapeHtml(mod.label) + "</button>";
-  }).join("");
-}
-
 export function renderFilterOptions(state) {
-  renderSelect("asset-type", getAssetTypeOptionsForModule(state), state.filters.assetType, "-- Select asset type --");
+  renderSelect("asset-type", getAssetTypeOptions(state), state.filters.assetType, "-- Select asset type --");
   renderSelect("asset-subtype", getAssetSubtypeOptionsForSelection(state), state.filters.assetSubtype, "-- Select sub-type --");
-  renderSelect("project-phase", getProjectPhaseOptionsForModule(state), state.filters.projectPhase, "-- Select project phase --");
-  renderSelect("country-code", state.data.filters.countries, state.filters.countryCode, "-- Select country --");
+  renderSelect("project-phase", getProjectPhaseOptions(state), state.filters.projectPhase, "-- Select project phase --");
 }
 
 export function renderQuestions(state) {
@@ -38,7 +28,7 @@ export function renderQuestions(state) {
   var questions = getVisibleQuestions(state);
 
   if (!allFiltersSelected(state)) {
-    root.innerHTML = '<div class="empty-state">Select all 4 filters to load your questionnaire.</div>';
+    root.innerHTML = '<div class="empty-state">Select all 3 filters to load your questionnaire.</div>';
     return;
   }
 
@@ -52,20 +42,30 @@ export function renderQuestions(state) {
   }).join("");
 }
 
+/** Characters shown before “See more” on long recommendation text. */
+var REC_PREVIEW_CHARS = 280;
+
 /**
  * One recommendation per answered question when text exists for that answer key.
+ * Long copy is collapsed by default; expansion is stored on state.expandedRecommendations.
  */
 export function renderRecommendations(state) {
   var root = document.getElementById("recommendations-root");
   var questions = getVisibleQuestions(state);
   var recs = [];
+  var visibleIds = {};
 
   questions.forEach(function (q) {
     var answer = state.answers[q.id];
     if (!answer || !q.recommendations) return;
     var recText = q.recommendations[answer] || "";
     if (!recText) return;
+    visibleIds[q.id] = true;
     recs.push({ source: q.id, text: recText });
+  });
+
+  Object.keys(state.expandedRecommendations || {}).forEach(function (id) {
+    if (!visibleIds[id]) delete state.expandedRecommendations[id];
   });
 
   if (!recs.length) {
@@ -74,13 +74,38 @@ export function renderRecommendations(state) {
   }
 
   root.innerHTML = recs.map(function (rec) {
-    return [
-      '<article class="recommendation-item">',
-      '<p class="recommendation-source">' + escapeHtml(rec.source) + "</p>",
-      "<p>" + escapeHtml(rec.text) + "</p>",
-      "</article>"
-    ].join("");
+    return renderRecommendationHtml(state, rec);
   }).join("");
+}
+
+function renderRecommendationHtml(state, rec) {
+  var text = rec.text;
+  var needsToggle = text.length > REC_PREVIEW_CHARS;
+  var expanded = !!(state.expandedRecommendations && state.expandedRecommendations[rec.source]);
+  var shown = needsToggle && !expanded
+    ? text.slice(0, REC_PREVIEW_CHARS).replace(/\s+\S*$/, "") + "…"
+    : text;
+
+  var parts = [
+    '<article class="recommendation-item">',
+    '<p class="recommendation-source">' + escapeHtml(rec.source) + "</p>",
+    '<div class="recommendation-body">' + formatRecommendationText(shown) + "</div>"
+  ];
+
+  if (needsToggle) {
+    parts.push(
+      '<button type="button" class="rec-toggle" data-rec-id="' + escapeHtml(rec.source) + '">' +
+        (expanded ? "See less" : "See more") +
+      "</button>"
+    );
+  }
+
+  parts.push("</article>");
+  return parts.join("");
+}
+
+function formatRecommendationText(text) {
+  return escapeHtml(text).replace(/\n/g, "<br>");
 }
 
 export function renderFatal(message) {

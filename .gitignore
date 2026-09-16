@@ -4,6 +4,11 @@
 # Optional local drop folder for anything you never want pushed
 private/
 
+# Working drafts / client workbooks / internal planning (keep locally)
+docs/propose-plan/
+docs/*.xlsx
+scripts/
+
 # --- Confidential / client-internal docs (keep locally; not for public remotes) ---
 Developer_Brifing.md
 Meeting_Preparation.md

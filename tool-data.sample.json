@@ -1,0 +1,649 @@
+{
+  "version": "joana-sample-2026-09-15",
+  "answerOptions": [
+    {
+      "value": "yes",
+      "label": "Yes"
+    },
+    {
+      "value": "no",
+      "label": "No"
+    },
+    {
+      "value": "unknown",
+      "label": "Not sure / Unknown"
+    },
+    {
+      "value": "na",
+      "label": "Not applicable"
+    }
+  ],
+  "filters": {
+    "assetTypes": [
+      {
+        "value": "agriculture",
+        "label": "Agriculture"
+      },
+      {
+        "value": "aquaculture",
+        "label": "Aquaculture"
+      },
+      {
+        "value": "conservation",
+        "label": "Conservation - Restoration"
+      },
+      {
+        "value": "forestry",
+        "label": "Forestry"
+      },
+      {
+        "value": "livestock_farming",
+        "label": "Livestock Farming"
+      }
+    ],
+    "assetSubtypesByAssetType": {
+      "agriculture": [
+        {
+          "value": "row_crops",
+          "label": "Row Crops",
+          "axis": "production_system"
+        },
+        {
+          "value": "perennial",
+          "label": "Perennial/Tree Crops",
+          "axis": "production_system"
+        },
+        {
+          "value": "agroforestry",
+          "label": "Integrated systems / Agroforestry",
+          "axis": "production_system"
+        },
+        {
+          "value": "irrigated",
+          "label": "Irrigated",
+          "axis": "project_characteristic"
+        },
+        {
+          "value": "smallholder",
+          "label": "Smallholder",
+          "axis": "project_characteristic"
+        },
+        {
+          "value": "regenerative",
+          "label": "Regenerative",
+          "axis": "project_characteristic"
+        }
+      ],
+      "aquaculture": [
+        {
+          "value": "land_based",
+          "label": "Land-based Aquaculture"
+        },
+        {
+          "value": "coastal",
+          "label": "Coastal Aquaculture"
+        },
+        {
+          "value": "off_shore",
+          "label": "Off-shore"
+        }
+      ],
+      "conservation": [
+        {
+          "value": "forestwoodland",
+          "label": "Forest & Woodland"
+        },
+        {
+          "value": "wetlandspeatlands",
+          "label": "Wetlands & Peatlands"
+        },
+        {
+          "value": "coastalmarine",
+          "label": "Coastal & Marine"
+        }
+      ],
+      "forestry": [
+        {
+          "value": "planted",
+          "label": "Intensive Planted Forest / Monoculture"
+        },
+        {
+          "value": "mixedspecies",
+          "label": "Mixed Species Planted Forest / Diversified & Multifunctional Forest"
+        },
+        {
+          "value": "selectivelogging",
+          "label": "Managed Natural Forests / Selective Logging"
+        },
+        {
+          "value": "ntfp",
+          "label": "Forests for Non-timber Forest Products (NTFPs)"
+        }
+      ],
+      "livestock_farming": [
+        {
+          "value": "intensive",
+          "label": "Intensive Farming"
+        },
+        {
+          "value": "grazing",
+          "label": "Granzing / Ranching"
+        },
+        {
+          "value": "pastoralism",
+          "label": "Pastoralism"
+        }
+      ]
+    },
+    "projectPhases": [
+      {
+        "value": "establishment",
+        "label": "Establishment"
+      },
+      {
+        "value": "operations",
+        "label": "Operations"
+      },
+      {
+        "value": "post_use",
+        "label": "Post-use"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "CORE_06",
+      "text": "Has the asset caused, or is it expected to cause, physical or economic displacement through land or resource use changes?",
+      "displayOrder": 1,
+      "filters": {
+        "assetType": [
+          "ALL"
+        ],
+        "assetSubtype": [
+          "ALL"
+        ],
+        "projectPhase": [
+          "establishment",
+          "operations"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Physical displacement\" refers to the relocation or loss of shelter resulting from land acquisition, land use change, or restrictions on access to land or natural resources.\n\n\"Economic displacement\" refers to loss of income, livelihoods, or access to land, water, fisheries, forests, grazing areas, or other natural resources, regardless of whether physical relocation occurs.",
+        "tools": [
+          {
+            "label": "LandMark",
+            "url": "https://landmarkmap.org/"
+          },
+          {
+            "label": "Global Human Settlement Layer",
+            "url": "https://ghsl.jrc.ec.europa.eu/"
+          },
+          {
+            "label": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/"
+          }
+        ],
+        "standards": [
+          {
+            "label": "IFC PS5 - Paragraphs 5 (applicability), 6 (voluntary acquisitions), 9 (settlements), 12 & 19 (physical), 16 (framework), 17 (definitions), 25 (economic)",
+            "url": ""
+          },
+          {
+            "label": "Equator Principles - Principle 1 - Legal Compliance, Principle 2 - Environmental and Social Assessment, Principle 3 - Applicable Environmental and Social Standards",
+            "url": ""
+          },
+          {
+            "label": "EBRD ESRs - PR5 - paragraphs 1, 5, 6, 7, 8, 10-14, 19-24 (physical), 25-33 (economic)",
+            "url": ""
+          },
+          {
+            "label": "OECD Guidelines for Multinational Enterprises on Responsible Business Conduct: Chapter IV. 1, 3, and 5; Chapter VI - 70, 81.",
+            "url": ""
+          },
+          {
+            "label": "OECD Due Diligence Guidance for Responsible Business Conduct: Indirect. Step 2.2 (b), (d), 6.1(a)",
+            "url": ""
+          },
+          {
+            "label": "UN Guiding Principles on Business and Human Rights (UNGPs): Indirect Coverage. Principle 1, 17(a), 22.",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Risk: The asset may have resulted, or may be expected to result in, physical or economic displacement through land or resource use changes. This may expose the investor to conflict with affected people, legal challenge, project delay, reputational harm, compensation liabilities, or loss of social licence to operate.\n\nRecommendations: \n– Obtain evidence on whether physical relocation, loss of shelter, loss of access to land, water, fisheries, forests, grazing areas, or other livelihood resources has occurred or is expected.\n– Identify which people or groups are affected, including communities, customary users, smallholders, fishers, or pastoralists where relevant.\n– Confirm whether compensation, livelihood restoration, or other remedial measures are in place where impacts have occurred or are expected.\n–  Escalate to deeper diligence where displacement risk is confirmed, unclear, or contested.\n–  Verify that affected communities were consulted through documented engagement processes.\n–  Review any unresolved land, access, or compensation disputes associated with the asset.\n–  If direct evidence is unavailable, verify using the tools listed in Tools.\n\nUseful standards & references:\n–  IUCN ESMS Resettlement Action Plan (RAP) - Guidance Note: https://iucn.org/sites/default/files/2022-05/esms-resettlement-action-plan-rap-guidance-note.pdf\n–  IUCN ESMS Standard on Involuntary Resettlement and Access Restrictions: https://iucn.org/sites/default/files/2022-05/iucn-esms-standard-inv-resettlement-access-restrictions.pdf\n– IFC PS5 Guidance Note (Land Acquisition and Involuntary Resettlement):\nhttps://www.ifc.org/content/dam/ifc/doc/2010/2012-ifc-ps-guidance-note-5-en.pdf\n– IFC Good Practice Handbook — Land Acquisition and Involuntary Resettlement: https://www.ifc.org/en/insights-reports/2023/handbook-land-acquisition-and-involuntary-resettlement?s_kwcid=AL!18468!3!!!!x!!&gad_source=1&gad_campaignid=23774176469&gbraid=0AAAAAD5Nd_T73gnAc_J0pHAJAhuMCQBPX&gclid=CjwKCAjwzevPBhBaEiwAplAxvsASh_As7xZ43bzLF3Csq25MpNbrLfKFelWMTvDaFVnK12s3drCKahoCYrEQAvD_BwE\n– World Bank ESS5 Guidance Note (Land Acquisition, Restrictions on Land Use and Involuntary Resettlement):\nhttps://documents1.worldbank.org/curated/en/294331530217033360/ESF-Guidance-Note-5-Land-Acquisition-Restrictions-on-Land-Use-and-Involuntary-Resettlement-English.pdf\n– FAO VGGT (Voluntary Guidelines on the Responsible Governance of Tenure):\nhttps://www.fao.org/tenure/voluntary-guidelines/en/\n– EBRD PR5: Land Acquisition, Involuntary Resettlement and Economic Displacement:\nhttps://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/environment---sustainability/implement-performance-requirements/prs/pr5/1552-EBRD-guidance-note-land-acquisition-restrictions-on-land-use-and-involuntary-resettlement.pdf",
+        "no": "No resettlement/displacement-related risks identified.",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      }
+    },
+    {
+      "id": "CORE_07",
+      "text": "Where displacement has occurred or is expected, are compensation or livelihood restoration measures in place?",
+      "displayOrder": 2,
+      "filters": {
+        "assetType": [
+          "ALL"
+        ],
+        "assetSubtype": [
+          "ALL"
+        ],
+        "projectPhase": [
+          "establishment",
+          "operations"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Compensation or livelihood restoration measures\" refers to actions taken to address displacement-related harm to affected people. This may include: cash or in-kind compensation for lost land, housing, assets, or access rights; livelihood restoration measures for people who lose income sources, productive land, fishing grounds, grazing areas, forests, or other natural-resource access; transitional support, replacement land, housing, or income-restoration support where relevant.",
+        "tools": [],
+        "standards": [
+          {
+            "label": "IFC Performance Standards: IFC PS5 - Paragraphs 9 (avoidance/minimisation), 12-13 (compensation and benefits for physically displaced persons), 16 (resettlement framework), 19 (compensation standards), 24-28 (economic displacement and livelihood restoration), 29 (private sector responsibilities). IFC PS1 - Paragraphs 5-6 (ESMS), 7 (management programs), 17-20 (monitoring and review)",
+            "url": ""
+          },
+          {
+            "label": "Equator Principles (EP4): Principle 2 - Environmental and Social Assessment; Principle 3 - Applicable Environmental and Social Standards; Principle 4 - Environmental and Social Management System and EP Action Plan; Principle 5 - Stakeholder Engagement; Principle 6 - Grievance Mechanism; Principle 8 - Covenants",
+            "url": ""
+          },
+          {
+            "label": "EBRD ESRs: PR5 - paragraphs 10-20 (displacement planning and compensation), 21-29 (livelihood restoration and related measures), 37-39 (consultation, grievance, and monitoring). PR1 - paragraphs 17-21 (management programmes), 24-25 (monitoring and review)",
+            "url": ""
+          },
+          {
+            "label": "OECD Guidelines for Multinational Enterprises on Responsible Business Conduct: Chapter II - A.10, A.11, A.12, A.14, A.15; Chapter IV - 1, 2, 3, 5, 6",
+            "url": ""
+          },
+          {
+            "label": "OECD Due Diligence Guidance for Responsible Business Conduct:Step 3.1(c)-(f); Step 3.2(a)-(e); Step 4.1-4.2; Step 6.1-6.2",
+            "url": ""
+          },
+          {
+            "label": "UN Guiding Principles on Business and Human Rights (UNGPs): Principles 18(b), 19(a)-(b), 20, 22",
+            "url": ""
+          },
+          {
+            "label": "UN Guiding Principles on Business and Human Rights (UNGPs):",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Compensation or livelihood restoration measures are in place for displacement-related impacts.",
+        "no": "Risk: Where displacement has occurred or is expected, the asset does not demonstrate compensation or livelihood restoration measures. This may expose the investor to unresolved harm to affected people, legal challenge, project delay, reputational risk, and increased likelihood of conflict or grievance escalation.\n\nRecommendations:\n– Obtain evidence of compensation, livelihood restoration, or other remedial measures for affected people or groups.\n– Confirm whether the measures are proportionate to the type and scale of displacement.\n– Verify whether the measures cover both formal rightsholders and customary or informal users where relevant.\n– Escalate to deeper diligence where remedial measures are absent, incomplete, disputed, or not yet implemented.\n–  If direct evidence is unavailable, verify using the tools listed in Tools.\n\nUseful standards & references:\n– IFC Guidance Note 5: Land Acquisition and Involuntary Resettlement: https://www.ifc.org/content/dam/ifc/doc/2010/2012-ifc-ps-guidance-note-5-en.pdf\n– EBRD Performance Requirement 5 Guidance Note: Land Acquisition, Restrictions on Land Use and Involuntary Resettlement: https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/environment---sustainability/implement-performance-requirements/prs/pr5/1552-EBRD-guidance-note-land-acquisition-restrictions-on-land-use-and-involuntary-resettlement.pdf\n– World Bank ESS5 Guidance Note: Land Acquisition, Restrictions on Land Use and Involuntary Resettlement: https://thedocs.worldbank.org/en/doc/f25263d7a7f5415b79b69c5cc65a96cf-0290012025/original/ESS5-Land-Acquisition-Restrictions-on-Land-Use-and-Involuntary-Resettlement-English.pdf\n– FAO Voluntary Guidelines on the Responsible Governance of Tenure: https://www.fao.org/tenure/voluntary-guidelines/en/\n– FAO Governance of Tenure Technical Guides: https://www.fao.org/tenure/resources/collections/governance-of-tenure-technical-guides/en/\n–  VGGT Technical Guidance: https://www.fao.org/tenure/resources/collections/governance-of-tenure-technical-guides/en/",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      },
+      "parentQuestionId": "CORE_06",
+      "condition": {
+        "sourceQuestionId": "CORE_06",
+        "operator": "equals",
+        "values": [
+          "yes"
+        ]
+      }
+    },
+    {
+      "id": "AQUA_01",
+      "text": "Does the asset rely on water abstraction in areas of freshwater stress or limited water availability?",
+      "displayOrder": 3,
+      "filters": {
+        "assetType": [
+          "aquaculture"
+        ],
+        "assetSubtype": [
+          "ALL"
+        ],
+        "projectPhase": [
+          "establishment",
+          "operations",
+          "post_use"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Water abstraction\" refers to the withdrawal or diversion of surface water, groundwater, seawater, or other water sources for aquaculture operations. Water abstraction may support pond filling, flow-through systems, hatcheries, water exchange, cleaning, temperature control, or other operational processes.\n\nHigh levels of water abstraction may alter water availability, hydrological conditions, or natural flow regimes in surrounding ecosystems, particularly where water resources are limited, seasonal, or shared with other users.",
+        "tools": [
+          {
+            "label": "WRI Aqueduct",
+            "url": "https://www.wri.org/aqueduct"
+          },
+          {
+            "label": "WWF Water Risk Filter",
+            "url": "https://riskfilter.org/water/home"
+          },
+          {
+            "label": "World Bank Water",
+            "url": "https://wbwaterdata.org/"
+          },
+          {
+            "label": "FAO AQUASTAT",
+            "url": "https://data.apps.fao.org/aquastat/"
+          },
+          {
+            "label": "Water Footprint Assessment Tool",
+            "url": "https://www.waterfootprintassessmenttool.org/"
+          }
+        ],
+        "standards": [
+          {
+            "label": "Aquaculture Stewardship Council (ASC): Principle 2, Criterion 2.7 - Water Quality; Principle 2, Criterion 2.9 - Freshwater Use",
+            "url": ""
+          },
+          {
+            "label": "Best Aquaculture Practices (BAP)",
+            "url": ""
+          },
+          {
+            "label": ": 3.20 – Hydrological flow not to be impeded without permits; 3.21 – Groundwater extraction monitoring;  3.22 – No ecological damage from water abstraction; 3.3.1–3.3.3 – Effluent compliance options tied to permits and regulations",
+            "url": ""
+          },
+          {
+            "label": "Map to TNFD Additional sector guidance – Aquaculture: Table 10 - Impact driver in land-based aquaculture; Table 18 - C2.1 / C3.0",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Risk: The asset may rely on water abstraction that alters water availability or conditions in surrounding ecosystems. This may increase risks of ecosystem degradation, water-use conflicts, regulatory restrictions, operational disruption, or cumulative pressure on shared water resources.\n\nRecommendations:\n– Obtain and review information on water sources, abstraction volumes, seasonal demand, and operational dependence on freshwater inputs.\n– Assess whether the asset is located in a water-stressed or water-constrained catchment and whether abstraction may affect other users or freshwater ecosystems.\n– Review whether abstraction permits, allocation conditions, and water-monitoring requirements are in place and complied with.\n– Assess whether water-efficiency, recirculation, reuse, storage, or contingency measures are in place to reduce freshwater dependency.\n– Escalate to deeper diligence where freshwater dependency is material, poorly managed, or exposed to local scarcity risk.\n– If direct evidence is unavailable, use the tools listed in Tools.\n\nUseful standards & references:\n– Alliance for Water Stewardship (AWS) International Water Stewardship Standard: https://a4ws.org/\n– IFC EHS Aquaculture: https://www.ifc.org/content/dam/ifc/doc/2000/2007-aquaculture-ehs-guidelines-en.pdf\n– Best Practices for Aquaculture Management - Guidance for implementing the ecosystem approach in Indonesia and beyond: https://sustainablefish.org/wp-content/uploads/2021/09/Aquaculture-Best-Practices-Guide-Nov-9-web-1.pdf\n– Water quality management in aquaculture: https://www.cambridge.org/core/journals/cambridge-prisms-water/article/water-quality-management-in-aquaculture/3EEA40E016F10E0702F134F361B5736A\n– UNEP - Turning the Tide: How to Finance a Sustainable Ocean Recovery: https://www.unepfi.org/publications/turning-the-tide/\n– Alliance for Water Stewardship (AWS Standard) - https://a4ws.org/aws-standard/\n– ASC Water criteria (contextual performance benchmarks) - https://asc-aqua.org/wp-content/uploads/2024/02/TAG-27-2023.07-B12.2-Criteria-2.7-%E2%80%93-Water-Quality-March-April-2023-Consultation-Summary-Report.pdf\n–  EU Aquaculture Guidance: https://aquaculture.ec.europa.eu/media/infographics?pk_campaign=infographic_2026&pk_source=linkedin&pk_medium=paid&pk_content=static",
+        "no": "No material risks identified relating to water abstraction or water dependency.",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      }
+    },
+    {
+      "id": "AQUA_09",
+      "text": "Does the asset rely on effluent or wastewater discharge practices that may create risks to surrounding water bodies or ecosystems?",
+      "displayOrder": 4,
+      "filters": {
+        "assetType": [
+          "aquaculture"
+        ],
+        "assetSubtype": [
+          "land_based"
+        ],
+        "projectPhase": [
+          "operations",
+          "post_use"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Effluent or wastewater discharge practices\" refers to how the asset collects, treats, stores, releases, reuses, or disposes of water and liquid waste generated by aquaculture operations.\n\nThis may include: 1) discharge of untreated or insufficiently treated wastewater; 2) release of water containing nutrients, suspended solids, sludge, organic matter, chemicals, or treatment residues; 3) discharge to rivers, lakes, groundwater, wetlands, estuaries, or coastal waters; 4) failure, overflow, leakage, or bypass of treatment, settlement, or containment systems. These practices may create risks of water-quality deterioration, eutrophication, oxygen depletion, sediment or sludge accumulation, contamination, or broader harm to surrounding aquatic ecosystems.",
+        "tools": [
+          {
+            "label": "UNEP-WCMC Ocean Data Viewer",
+            "url": "https://data.unep-wcmc.org/"
+          },
+          {
+            "label": "Aqueduct Water Risk Atlas",
+            "url": "https://www.wri.org/aqueduct"
+          },
+          {
+            "label": "WWF Water Risk Filter",
+            "url": "https://riskfilter.org/water"
+          }
+        ],
+        "standards": [
+          {
+            "label": "Aquaculture Stewardship Council (ASC): Principle 2, Criterion 2.5 - Benthic Impact;",
+            "url": ""
+          },
+          {
+            "label": "Principle 2, Criterion 2.6 - Water Quality; Appendix 7 & 8 (thresholds)",
+            "url": ""
+          },
+          {
+            "label": "Best Aquaculture Practices (BAP)",
+            "url": ""
+          },
+          {
+            "label": ": 3.23–3.29 – Water quality and sediment monitoring requirements; 4.7 - Water quality monitoring",
+            "url": ""
+          },
+          {
+            "label": "IFC Environmental, Health and Safety (EHS) Guidelines for Aquaculture: 2.1. Environmental Monitoring",
+            "url": ""
+          },
+          {
+            "label": "FAO Code of Conduct for Responsible Fisheries (CCRF): Articles 7.1.7 / 12.5",
+            "url": ""
+          },
+          {
+            "label": "Map to TNFD Additional sector guidance – Aquaculture: Indirect. Table 18 - C2.0 / C2.2 / C2.4 / C3.0; Table 19 - A.C2.0 / A.C2.1 / A.C3.1",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Risk: The asset may rely on effluent or wastewater discharge practices that create risks to surrounding water bodies or ecosystems. This may increase the risk of water-quality deterioration, eutrophication, oxygen depletion, contamination, habitat degradation, regulatory non-compliance, or downstream ecological impacts.\n\nRecommendations:\n– Obtain and review information on effluent volumes, discharge pathways, treatment systems, and monitoring results.\n– Assess whether wastewater or effluent is treated adequately before release and whether failures, overflows, or bypass events may occur.\n– Review whether nutrient, sediment, sludge, chemical, or residue discharges may affect surrounding water bodies or ecosystems.\n– Assess whether the receiving environment is enclosed, low-flowing, hydrologically sensitive, or otherwise vulnerable to pollutant accumulation.\n– Review whether discharge practices comply with applicable permits, thresholds, and water-quality requirements.\n–Escalate to deeper diligence where unmanaged discharge risk, repeated exceedances, or weak treatment controls are identified.\n– If direct evidence is unavailable, use the tools listed in Tools.\n\nUseful standards & references:\n– IFC EHS Aquaculture:https://www.ifc.org/content/dam/ifc/doc/2000/2007-aquaculture-ehs-guidelines-en.pdf\n–A systematic review on aquaculture wastewater: Pollutants, impacts, and treatment technology: https://www.sciencedirect.com/science/article/pii/S0013935124016980\n–  EU Aquaculture Guidance: https://aquaculture.ec.europa.eu/media/infographics?pk_campaign=infographic_2026&pk_source=linkedin&pk_medium=paid&pk_content=static",
+        "no": "No material risk identified relating to effluent or wastewater discharge practices.",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      }
+    },
+    {
+      "id": "AGRI-04",
+      "text": "Does the asset use chemical pesticides, fertilisers, or other agrochemicals that may contaminate soil, water, or affect biodiversity?",
+      "displayOrder": 5,
+      "filters": {
+        "assetType": [
+          "agriculture"
+        ],
+        "assetSubtype": [
+          "ALL"
+        ],
+        "projectPhase": [
+          "establishment",
+          "operations"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Agrochemicals\" refers to chemical inputs used in the farming system, including pesticides, herbicides, fungicides, synthetic fertilisers, and growth regulators.\n\nRisk may arise where these inputs contaminate soils, water bodies, or non-target species through leaching, runoff, drift, or accumulation.",
+        "tools": [
+          {
+            "label": "Stockholm Convention POPs List",
+            "url": "https://www.pops.int/TheConvention/ThePOPs/AllPOPs/tabid/2509/Default.aspx"
+          },
+          {
+            "label": "Rotterdam Convention PIC List",
+            "url": "https://www.pic.int/theconvention/chemicals/annexiiichemicals"
+          },
+          {
+            "label": "PAN International Highly Hazardous Pesticides List",
+            "url": "https://pan-international.org/wp-content/uploads/PAN_HHP_List.pdf"
+          },
+          {
+            "label": "FAO Pesticide Registration Toolkit",
+            "url": "https://www.fao.org/pesticide-registration-toolkit/en/\""
+          }
+        ],
+        "standards": [
+          {
+            "label": "IFC PS3 - Pollution Prevention",
+            "url": ""
+          },
+          {
+            "label": "FAO/WHO International Code of Conduct on Pesticide Management",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Risk: The asset may use agrochemicals in ways that contaminate soil, water, or affect biodiversity. This may increase the risk of pollution, non-target species impacts, degraded ecosystem function, regulatory non-compliance, and long-term ecological harm.\n\nRecommendations:\n– Obtain and review information on the types, volumes, frequency, and application methods of agrochemicals used by the asset.\n– Assess whether current use may create material risks through runoff, leaching, drift, or accumulation in soils, water bodies, sediments, or biota.\n– Review whether use patterns may affect non-target species, pollinators, aquatic systems, or surrounding habitats.\n– Assess whether lower-risk alternatives, integrated pest management, precision application, or reduced-input practices are available and used where appropriate.\n– Escalate to deeper diligence where contamination or biodiversity risk is material, poorly controlled, or not clearly justified.\n– If direct evidence is unavailable, use the tools listed in Tools.\n\nUseful standards & references:\n– FAO guidance on integrated pest management: https://www.fao.org/agriculture/crops/thematic-sitemap/theme/pests/ipm/en/\n– IFC EHS Guidelines — General EHS Guidelines: https://www.ifc.org/en/insights-reports/2007/ehs-guidelines\n– IFC PS6 Guidance Note: https://www.ifc.org/content/dam/ifc/doc/2010/20190627-ifc-ps-guidance-note-6-en.pdf\n– OECD-FAO Guidance for Responsible Agricultural Supply Chains: https://www.oecd.org/en/publications/oecd-fao-guidance-for-responsible-agricultural-supply-chains_9789264251052-en.html\n– FAO guidance on pesticide management: https://www.fao.org/pest-and-pesticide-management/en/",
+        "no": "No material risk identified relating to agrochemical contamination of soil, water, or biodiversity",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      }
+    },
+    {
+      "id": "AGRI-05",
+      "text": "If agrochemicals are used, does the asset use Highly Hazardous Pesticides (HHPs), or pesticides banned under the Stockholm or Rotterdam Conventions?",
+      "displayOrder": 6,
+      "filters": {
+        "assetType": [
+          "agriculture"
+        ],
+        "assetSubtype": [
+          "ALL"
+        ],
+        "projectPhase": [
+          "operations"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Highly Hazardous Pesticides (HHPs)\" refers to pesticides identified under internationally recognised criteria as posing particularly high acute or chronic hazards. This question also covers pesticides banned, severely restricted, or listed under the Stockholm or Rotterdam Conventions.",
+        "tools": [
+          {
+            "label": "Stockholm Convention POPs List",
+            "url": "https://www.pops.int/TheConvention/ThePOPs/AllPOPs/tabid/2509/Default.aspx"
+          },
+          {
+            "label": "Rotterdam Convention PIC List",
+            "url": "https://www.pic.int/theconvention/chemicals/annexiiichemicals"
+          },
+          {
+            "label": "PAN International Highly Hazardous Pesticides List",
+            "url": "https://pan-international.org/wp-content/uploads/PAN_HHP_List.pdf"
+          },
+          {
+            "label": "FAO Pesticide Registration Toolkit",
+            "url": "https://www.fao.org/pesticide-registration-toolkit/en/"
+          },
+          {
+            "label": "https://www.fao.org/pesticide-registration-toolkit/en/\"",
+            "url": "https://www.fao.org/pesticide-registration-toolkit/en/\""
+          }
+        ],
+        "standards": [
+          {
+            "label": "IFC PS3 - Pollution Prevention",
+            "url": ""
+          },
+          {
+            "label": "FAO/WHO International Code of Conduct on Pesticide Management",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Risk: The asset may use Highly Hazardous Pesticides (HHPs), or pesticides banned, severely restricted, or internationally controlled under the Stockholm or Rotterdam Conventions. This may increase the risk of acute or chronic toxicity, environmental persistence, contamination, non-target biodiversity impacts, regulatory non-compliance, and market access restrictions.\n\nRecommendations:\n– Obtain and review pesticide inventories, procurement records, and evidence of active ingredients used by the asset.\n– Assess whether any products used include HHPs, POPs, or substances listed under the Stockholm or Rotterdam Conventions.\n– Review whether pesticide use may conflict with national regulation, buyer requirements, certification expectations, or lender exclusion criteria.\n– Assess whether lower-risk substitutes, phase-out measures, or integrated pest management alternatives are available and used.\n– Escalate to deeper diligence where HHPs or convention-listed pesticides are confirmed, cannot be ruled out, or appear poorly controlled.\n– If direct evidence is unavailable, use the tools listed in Tools.\n\nUseful standards & references:\n– FAO / WHO guidance on Highly Hazardous Pesticides (HHPs): https://www.fao.org/pest-and-pesticide-management/pesticide-risk-reduction/hhp-toolkit/en/\n– Stockholm Convention on Persistent Organic Pollutants: https://www.pops.int/\n– Rotterdam Convention Prior Informed Consent procedure: https://www.pic.int/\n– IFC EHS Guidelines — General EHS Guidelines: https://www.ifc.org/en/insights-reports/2007/ehs-guidelines\n– FAO guidance on pesticide risk reduction: https://www.fao.org/pest-and-pesticide-management/en/\n– OECD responsible business conduct guidance: https://www.oecd.org/en/publications/oecd-guidelines-for-multinational-enterprises-on-responsible-business-conduct_81f92357-en.html",
+        "no": "No material risk identified relating to the use of Highly Hazardous Pesticides (HHPs) or pesticides banned under the Stockholm or Rotterdam Conventions.",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      },
+      "parentQuestionId": "AGRI-04",
+      "condition": {
+        "sourceQuestionId": "AGRI-04",
+        "operator": "equals",
+        "values": [
+          "yes"
+        ]
+      }
+    },
+    {
+      "id": "AGRI-11",
+      "text": "Does the agroforestry system have limited species or structural diversity?",
+      "displayOrder": 7,
+      "filters": {
+        "assetType": [
+          "agriculture"
+        ],
+        "assetSubtype": [
+          "agroforestry"
+        ],
+        "projectPhase": [
+          "establishment",
+          "operations"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Limited species or structural diversity\" refers to an agroforestry system that includes only a narrow range of species, vegetation layers, or habitat features, rather than a functionally diverse mix of woody and non-woody components.\n\nThis may include systems that are labelled as agroforestry but remain essentially a monoculture with isolated trees, scattered plantings, or limited ecological or productive integration. Genuine agroforestry combines woody and non-woody species in functional spatial and temporal arrangements (alley cropping, silvopasture, multi-strata).  'Cosmetic agroforestry' adds isolated trees or scattered plantings without ecological function or productive integration.",
+        "tools": [
+          {
+            "label": "World Agroforestry (ICRAF) knowledge base:    //",
+            "url": "https://www.landscapealliance.org/gtkp/resources/types/mapp-apps/"
+          },
+          {
+            "label": "Restor (restor.eco) for project profiles",
+            "url": "https://restor.eco/pt/map/?lat=26&lng=14.23&zoom=3"
+          },
+          {
+            "label": "https://apps.worldagroforestry.org/treedb2/index.php?letter=F",
+            "url": "https://apps.worldagroforestry.org/treedb2/index.php?letter=F"
+          }
+        ],
+        "standards": [
+          {
+            "label": "SER International Standards: Restoration component",
+            "url": ""
+          },
+          {
+            "label": "CBD GBF: target 10",
+            "url": ""
+          },
+          {
+            "label": "World Agroforestry (ICRAF) typology: Covered",
+            "url": ""
+          }
+        ]
+      },
+      "recommendations": {
+        "yes": "Risk: The asset may be labelled as agroforestry but have limited species or structural diversity. This may mean the system provides fewer biodiversity, soil-health, shade, microclimate, pest-control, and habitat-connectivity benefits than expected from a functional agroforestry system.\n\nRecommendations:\n– Obtain and review information on the number and type of tree, crop, understory, and ground-cover species in the system.\n– Assess whether woody and non-woody species are functionally integrated, rather than present as isolated or symbolic tree planting.\n– Review whether the system includes vertical structure, such as canopy, mid-story, understory, ground cover, or mixed spatial arrangements.\n– Assess whether practices such as alley cropping, silvopasture, multi-strata planting, shade-grown production, or habitat corridors are genuinely present.\n– Escalate to deeper diligence where the project claims agroforestry benefits but remains structurally simple or close to monoculture.\n– If direct evidence is unavailable, use the tools listed in Tools.\n\nUseful standards & references:\n– FAO Agroforestry: https://www.fao.org/agroforestry/en // fao.org/3/i7374e/i7374e.pdf\n– FAO Sustainable Forest Management Toolbox — Agroforestry module: https://www.fao.org/sustainable-forest-management-toolbox/modules/agroforestry/en\n– CIFOR-ICRAF agroforestry resources: https://www.cifor-icraf.org/\n– Rainforest Alliance indicator guidance on shade trees and shade-tree species: https://knowledge.rainforest-alliance.org/docs/indicator-guidance\n– World Agroforestry (ICRAF) Guidelines: https://www.landscapealliance.org/gtkp/resources/types/guidelines/",
+        "no": "No material risk identified relating to limited species or structural diversity in the agroforestry system.",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      }
+    },
+    {
+      "id": "AGRI-13",
+      "text": "Does the asset abstract water in ways that may exceed local sustainable yield or compete with community or ecosystem water needs?",
+      "displayOrder": 8,
+      "filters": {
+        "assetType": [
+          "agriculture"
+        ],
+        "assetSubtype": [
+          "irrigated"
+        ],
+        "projectPhase": [
+          "establishment",
+          "operations"
+        ]
+      },
+      "resources": {
+        "clarification": "\"Water abstraction that may exceed local sustainable yield or compete with community or ecosystem water needs\" refers to taking surface water or groundwater at a level that may reduce water availability for other users or for nature. This may include abstraction from rivers, lakes, reservoirs, wetlands, aquifers, or shared irrigation systems in areas with seasonal scarcity, declining groundwater, competing household or agricultural use, or sensitive aquatic ecosystems.",
+        "tools": [
+          {
+            "label": "WRI Aqueduct Water Risk Atlas",
+            "url": "https://www.wri.org/aqueduct"
+          },
+          {
+            "label": "WWF Water Risk Filter",
+            "url": "https://riskfilter.org/water/home"
+          },
+          {
+            "label": "FAO AQUASTAT",
+            "url": "https://www.fao.org/aquastat/en/"
+          },
+          {
+            "label": "World Bank Water Data",
+            "url": "https://wbwaterdata.org/"
+          },
+          {
+            "label": "FAO GLEAM Water",
+            "url": "https://foodandagricultureorganization.shinyapps.io/GLEAMV3_WATER_Public/"
+          },
+          {
+            "label": "https://foodandagricultureorganization.shinyapps.io/GLEAMV3_WATER_Public/\"",
+            "url": "https://foodandagricultureorganization.shinyapps.io/GLEAMV3_WATER_Public/\""
+          }
+        ],
+        "standards": []
+      },
+      "recommendations": {
+        "yes": "\"Risk: The asset may be abstracting surface water or groundwater in ways that exceed local sustainable yield or compete with community and ecosystem water needs. This may reduce water availability for households, other farms, wetlands, rivers, fisheries, or groundwater-dependent ecosystems, and may create regulatory, operational, or stakeholder conflict risk.\n\nRecommendations:\n– Obtain and review information on water sources, abstraction volumes, permits, seasonal use, and competing users in the catchment or aquifer.\n– Assess whether abstraction occurs in a water-stressed basin, during dry seasons, or from a declining aquifer or flow-limited river system.\n– Review whether sustainable yield, environmental flow needs, and community water needs have been assessed.\n– Assess whether water abstraction is monitored, permitted, and managed through credible water-efficiency or catchment-management measures.\n– Escalate to deeper diligence where abstraction volumes are material, sustainable yield is unclear, or there are signs of competition with communities, ecosystems, or other users.\n– If direct evidence is unavailable, use the tools listed in Tools.\n\nUseful standards & references:\n– IFC EHS Guidelines — Annual Crop Production: https://www.ifc.org/en/insights-reports/2016/publications-policy-ehs-annual-crop-production\n– FAO AQUASTAT Core Database: https://www.fao.org/aquastat/en/databases/maindatabase/\n– World Bank Good Practice Note — Water Use: https://thedocs.worldbank.org/en/doc/1705244180e2f487ed86b4d74b1a4542-0290032021/original/ESF-Water-Use-Good-Practice-Note.pdf\"",
+        "no": "No material risk identified relating to water abstraction exceeding sustainable yield or competing with community or ecosystem water needs.",
+        "unknown": "Refer to tools (if any available)",
+        "na": "Refer to the clarifications and ensure the question and related topic are not applicable"
+      }
+    }
+  ]
+}

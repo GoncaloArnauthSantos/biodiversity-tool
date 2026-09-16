@@ -2,7 +2,7 @@
  * Entry point: loads JSON dataset, wires DOM events, triggers re-renders after user actions.
  */
 
-import { createState, resetFiltersAndAnswers } from "./tool-state.js";
+import { createState } from "./tool-state.js";
 import { clearAnswersForHiddenQuestions } from "./tool-logic.js";
 import {
   renderAll,
@@ -15,14 +15,13 @@ import {
 var state = createState();
 
 function init() {
-  fetch("./tool-data.mock.json")
+  fetch("./tool-data.sample.json")
     .then(function (res) {
-      if (!res.ok) throw new Error("Failed to load tool-data.mock.json");
+      if (!res.ok) throw new Error("Failed to load tool-data.sample.json");
       return res.json();
     })
     .then(function (data) {
       state.data = data;
-      state.module = data.modules[0].id;
       renderAll(state);
       bindEvents();
     })
@@ -32,16 +31,6 @@ function init() {
 }
 
 function bindEvents() {
-  document.getElementById("module-tabs").addEventListener("click", function (e) {
-    if (!e.target.classList.contains("module-tab")) return;
-    var moduleId = e.target.getAttribute("data-module-id");
-    if (!moduleId || moduleId === state.module) return;
-
-    state.module = moduleId;
-    resetFiltersAndAnswers(state);
-    renderAll(state);
-  });
-
   document.getElementById("asset-type").addEventListener("change", function (e) {
     state.filters.assetType = e.target.value;
     state.filters.assetSubtype = "";
@@ -60,13 +49,6 @@ function bindEvents() {
 
   document.getElementById("project-phase").addEventListener("change", function (e) {
     state.filters.projectPhase = e.target.value;
-    clearAnswersForHiddenQuestions(state);
-    renderQuestions(state);
-    renderRecommendations(state);
-  });
-
-  document.getElementById("country-code").addEventListener("change", function (e) {
-    state.filters.countryCode = e.target.value;
     clearAnswersForHiddenQuestions(state);
     renderQuestions(state);
     renderRecommendations(state);
@@ -91,6 +73,19 @@ function bindEvents() {
     var panel = document.getElementById(target);
     if (!panel) return;
     panel.classList.toggle("visible");
+  });
+
+  document.getElementById("recommendations-root").addEventListener("click", function (e) {
+    if (!e.target.classList.contains("rec-toggle")) return;
+    var recId = e.target.getAttribute("data-rec-id");
+    if (!recId) return;
+
+    if (state.expandedRecommendations[recId]) {
+      delete state.expandedRecommendations[recId];
+    } else {
+      state.expandedRecommendations[recId] = true;
+    }
+    renderRecommendations(state);
   });
 }
 

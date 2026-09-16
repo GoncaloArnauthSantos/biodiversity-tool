@@ -1,10 +1,10 @@
 # Biodiversity Assessment Tool
 
-Prototype **screening questionnaire** for biodiversity and nature-related due diligence across infrastructure, natural capital, and real estate–style asset contexts. This repository is a **vanilla JavaScript** front end: ES modules, no bundler, and JSON-driven content so the same app can be embedded in a CMS later.
+Prototype **screening questionnaire** for biodiversity and nature-related due diligence. This repository is a **vanilla JavaScript** front end: ES modules, no bundler, and JSON-driven content so the same app can be embedded in a CMS later.
 
-**Status:** Core UI and filtering logic are in place. **WordPress plugin packaging**, an **Excel → JSON** build pipeline, and **PDF / Excel export** are follow-up work (see [docs/Solution_Reference.md](docs/Solution_Reference.md) and [docs/Data_pipeline.md](docs/Data_pipeline.md)).
+**Status:** Core UI and filtering logic work against sample JSON. **WordPress plugin packaging**, a maintained **Excel → JSON** pipeline, and **PDF export** are follow-up work (see [docs/Solution_Reference.md](docs/Solution_Reference.md) and [docs/Data_pipeline.md](docs/Data_pipeline.md)).
 
-Internal briefings and deployment-specific notes (not intended for a public README) are **not** tracked in this tree; see [INTERNAL_MATERIALS.md](INTERNAL_MATERIALS.md).
+Internal briefings and deployment-specific notes are **not** tracked in this tree; see [INTERNAL_MATERIALS.md](INTERNAL_MATERIALS.md).
 
 ---
 
@@ -12,11 +12,10 @@ Internal briefings and deployment-specific notes (not intended for a public READ
 
 | Area | Behaviour |
 |------|------------|
-| **Modules** | Three tabs (e.g. infrastructure-style, natural capital, real estate–style sectors — labels come from JSON). |
-| **Filters** | Four required selects: asset type, asset sub-type, project phase, country (phase options depend on module). |
-| **Questions** | Only items matching module, filters, and optional **conditional** rules (`equals` / `in` on a prior answer). |
+| **Filters** | Three required selects: asset type, asset sub-type, project phase. |
+| **Questions** | Only items matching the selected filters and optional **conditional** rules (`equals` / `in` on a prior answer). |
 | **Answers** | Four options: Yes, No, Not sure / Unknown, Not applicable. |
-| **Recommendations** | Side panel shows cumulative recommendation copy per answered question when defined for that answer. |
+| **Recommendations** | Side panel shows cumulative recommendation copy; long text is collapsed with **See more** / **See less**. |
 | **Support content** | Per question: clarification text plus linked **Tools** and **Standards** (from JSON). |
 
 UI styles are scoped under `.ffb-biodiversity-tool` so the block can sit inside a host page without resetting global site CSS.
@@ -27,7 +26,7 @@ UI styles are scoped under `.ffb-biodiversity-tool` so the block can sit inside 
 
 - **Runtime:** Modern browsers (ES modules, `fetch`).
 - **Markup:** Static shell in `index.html`; lists and questions rendered from JS.
-- **Data:** `tool-data.mock.json` — reference dataset and implicit schema (see [docs/Data_pipeline.md](docs/Data_pipeline.md)).
+- **Data:** `tool-data.sample.json` — active sample dataset (see [docs/Data_pipeline.md](docs/Data_pipeline.md)). `tool-data.mock.json` is an older multi-module sample kept for reference only.
 
 ---
 
@@ -42,7 +41,8 @@ biodiversity-tool/
 ├── tool-logic.js              # Filter matching, visibility, conditional rules
 ├── tool-render.js             # DOM updates
 ├── tool-utils.js              # Shared helpers (escaping, selects)
-├── tool-data.mock.json        # Sample dataset
+├── tool-data.sample.json      # Active sample dataset
+├── tool-data.mock.json        # Legacy multi-module sample (not loaded by the app)
 ├── docs/                      # Architecture + data-flow notes (public-safe)
 └── docs/examples/             # Sample TSVs / dictionaries for workbook modelling
 ```
@@ -69,7 +69,7 @@ Then open the URL the server prints (e.g. `http://localhost:3000` or `http://loc
 
 ## Data flow (summary)
 
-Editors maintain structured content (typically **spreadsheet → JSON**). The app loads one JSON document describing modules, filters, questions, and recommendations. See [docs/Data_pipeline.md](docs/Data_pipeline.md).
+Editors maintain structured content (typically **spreadsheet → JSON**). The app loads one JSON document describing filters, questions, and recommendations. See [docs/Data_pipeline.md](docs/Data_pipeline.md).
 
 ---
 
@@ -85,7 +85,7 @@ Target integration: a **small plugin** that registers a shortcode, enqueues the 
 |----------|---------|
 | [docs/Solution_Reference.md](docs/Solution_Reference.md) | Architecture: Excel → JSON → plugin → page |
 | [docs/Data_pipeline.md](docs/Data_pipeline.md) | JSON shape and editorial pipeline (high level) |
-| [docs/examples/sample_questions_from_mock.tsv](docs/examples/sample_questions_from_mock.tsv) | Tab-separated sample aligned with the mock JSON |
+| [docs/examples/sample_questions_from_mock.tsv](docs/examples/sample_questions_from_mock.tsv) | Tab-separated sample aligned with the legacy mock JSON |
 | [docs/examples/dictionaries/](docs/examples/dictionaries/) | Sample dictionary tabs; see `README` inside |
 
 ---
@@ -93,15 +93,16 @@ Target integration: a **small plugin** that registers a shortcode, enqueues the 
 ## Roadmap (high level)
 
 - [ ] WordPress plugin: shortcode, asset enqueue, configurable JSON source  
-- [ ] Spreadsheet → JSON converter with schema validation  
-- [ ] Branded **PDF** and **Excel** export (per product agreement)  
+- [ ] Spreadsheet → JSON converter aligned with the current schema  
+- [ ] Branded **PDF** export (per product agreement)  
+- [ ] Layout iteration for long recommendations / denser content  
 - [ ] Hardening: accessibility, error states, optional i18n  
 
 ---
 
 ## Contributing
 
-Prefer keeping **one** canonical JSON shape (`tool-data.mock.json`) and updating examples when the schema evolves. Confidential specs and internal comms stay outside this published tree — see [INTERNAL_MATERIALS.md](INTERNAL_MATERIALS.md).
+Prefer keeping **`tool-data.sample.json`** as the canonical shape the app loads, and updating docs when the schema evolves. Confidential specs and internal comms stay outside this published tree — see [INTERNAL_MATERIALS.md](INTERNAL_MATERIALS.md).
 
 ### Documentation style
 
